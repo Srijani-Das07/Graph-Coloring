@@ -10,6 +10,8 @@ Vertices represent courses, edges represent student conflicts, and colors repres
 ### Welsh-Powell
 Greedy algorithm that sorts vertices by degree (descending) and assigns the lowest valid color to each.
 
+**Time Complexity:** O(V log V + E) — O(V log V) for sorting vertices by degree, O(E) for the greedy coloring pass. Simplifies to O(V²) for dense graphs.
+
 **Advantages**
 - Fastest runtime of all four algorithms
 - Simple to implement
@@ -24,6 +26,8 @@ Greedy algorithm that sorts vertices by degree (descending) and assigns the lowe
 
 ### DSATUR
 Greedy algorithm that dynamically selects the next vertex based on saturation degree (number of distinct colors in its neighborhood).
+
+**Time Complexity:** O(V² + E) for the naive implementation — O(V) per step to select the highest-saturation vertex, plus O(E) total for saturation updates. A heap-based implementation reduces this to O((V + E) log V).
 
 **Advantages**
 - Best solution quality among all four algorithms
@@ -40,6 +44,8 @@ Greedy algorithm that dynamically selects the next vertex based on saturation de
 ### Backtracking with Forward Checking
 Exact search algorithm that tries color assignments recursively, pruning branches where any uncolored neighbor has no valid colors remaining. Vertices ordered by descending degree.
 
+**Time Complexity:** O(V · k^V) in the worst case, where k is the greedy color upper bound. Forward checking reduces the effective branching factor in practice but cannot eliminate the exponential worst case.
+
 **Advantages**
 - Provides a certified feasible coloring
 - Forward checking significantly reduces search space
@@ -54,6 +60,8 @@ Exact search algorithm that tries color assignments recursively, pruning branche
 
 ### Simulated Annealing
 Metaheuristic that starts from a random coloring and iteratively perturbs it, accepting worse solutions probabilistically based on a cooling temperature schedule.
+
+**Time Complexity:** O(I · Δ_G), where I is the fixed iteration count (10,000) and Δ_G is the maximum degree. Simplifies to O(I · V) for dense graphs. The large constant I dominates in practice, making SA the slowest algorithm despite its relatively mild asymptotic growth.
 
 **Advantages**
 - Can theoretically escape local optima
