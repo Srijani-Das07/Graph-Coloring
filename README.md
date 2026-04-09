@@ -1,4 +1,4 @@
-# Graph Coloring — Exam Scheduling Application
+# Graph Coloring - Comparative Analysis of Algorithms
 
 Comparative study of four graph coloring algorithms applied to university exam scheduling.
 Vertices represent courses, edges represent student conflicts, and colors represent time slots.
